@@ -63,7 +63,7 @@ export default function UserProfile() {
         <div className="flex flex-col items-center mb-4">
           {user.profile_image_url ? (
             <img
-              src={user.profile_image_url}
+              src={`https://app-production-1f4c.up.railway.app${user.profile_image_url}`}
               alt={user.username}
               className="w-24 h-24 rounded-full object-cover mb-2"
             />

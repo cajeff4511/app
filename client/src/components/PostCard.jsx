@@ -36,7 +36,7 @@ export default function PostCard({ post }) {
       <div className="flex items-center mb-4 space-x-3">
         <Link to={`/users/${post.user_id}`}>
           <img
-            src={post.profile_image_url || '/default-avatar.png'}
+            src={`https://app-production-1f4c.up.railway.app${post.profile_image_url}` || '/default-avatar.png'}
             alt={post.username}
             className="w-10 h-10 rounded-full object-cover"
           />
@@ -55,7 +55,7 @@ export default function PostCard({ post }) {
       <p className="text-gray-800 mb-4">{post.content}</p>
       {post.image_url && (
         <img
-          src={post.image_url}
+          src={`https://app-production-1f4c.up.railway.app${post.image_url}`}
           alt=""
           className="w-full rounded-md object-cover mb-4"
         />

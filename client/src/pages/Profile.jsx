@@ -88,7 +88,7 @@ export default function Profile() {
             <div className="flex justify-center">
               {preview && (
                 <img
-                  src={preview}
+                  src={`https://app-production-1f4c.up.railway.app${preview}`}
                   alt="Preview"
                   className="w-24 h-24 rounded-full object-cover mb-4"
                 />
@@ -138,7 +138,7 @@ export default function Profile() {
             <div className="flex justify-center mb-4">
               {user.profile_image_url ? (
                 <img
-                  src={user.profile_image_url}
+                  src={`https://app-production-1f4c.up.railway.app${user.profile_image_url}`}
                   alt="Your avatar"
                   className="w-24 h-24 rounded-full object-cover"
                 />

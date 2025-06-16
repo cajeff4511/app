@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://app-production-1f4c.up.railway.app',
 })
 
 // attach token if available

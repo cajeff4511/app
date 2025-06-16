@@ -52,7 +52,7 @@ export default function CommentSection({ postId }) {
       {comments.map(c => (
         <div key={c.id} className="flex items-start space-x-3">
           <img
-            src={`http://localhost:3000${c.profile_image_url}` || '/default-avatar.png'}
+            src={`https://app-production-1f4c.up.railway.app${c.profile_image_url}` || '/default-avatar.png'}
             alt={c.username}
             className="w-6 h-6 rounded-full object-cover mt-1"
           />
