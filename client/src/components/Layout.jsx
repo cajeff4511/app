@@ -10,7 +10,7 @@ export default function Layout({ children }) {
       {/* Sticky title bar */}
       <header className="sticky top-0 bg-white shadow p-2 z-10 flex justify-center">
         <Link to="/" className="text-2xl font-semibold text-gray-800 text-center">
-          COMMUNITIES
+          UnSaid
         </Link>
       </header>
 
