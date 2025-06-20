@@ -22,10 +22,12 @@ exports.findAllPaginated = (limit, offset, cb) => {
 
 exports.findByUserIdPaginated = (userId, limit, offset, cb) => {
   const sql = `
-    SELECT id, content, image_url, created_at
+    SELECT posts.id, posts.content, posts.image_url, posts.created_at,
+           users.username, users.profile_image_url, users.id AS user_id
     FROM posts
-    WHERE user_id = ?
-    ORDER BY created_at DESC
+    JOIN users ON posts.user_id = users.id
+    WHERE users.id = ?
+    ORDER BY posts.created_at DESC
     LIMIT ? OFFSET ?
   `
   db.query(sql, [userId, limit, offset], cb)
