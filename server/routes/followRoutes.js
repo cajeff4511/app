@@ -5,7 +5,8 @@ const { authenticateToken } = require('../middleware/auth')
 const {
   getFollowStatus,
   followUser,
-  unfollowUser
+  unfollowUser,
+  getFollowing
 } = require('../controllers/followController')
 
 router.use(authenticateToken)
@@ -18,5 +19,8 @@ router.post('/user/:id',   followUser)
 
 // unfollow
 router.delete('/user/:id', unfollowUser)
+
+router.get('/following', authenticateToken, getFollowing);
+
 
 module.exports = router

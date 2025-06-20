@@ -44,3 +44,17 @@ exports.unfollowUser = (req, res) => {
     sendStatus(targetId, meId, res)
   })
 }
+
+
+exports.getFollowing = (req, res) => {
+  const userId = req.user?.id;
+
+  if (!userId) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  Follow.getFollowing(userId, (err, results) => {
+    if (err) return res.status(500).json({ message: 'Database error' });
+    res.json(results);
+  });
+};

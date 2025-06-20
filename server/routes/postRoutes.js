@@ -13,6 +13,9 @@ router.get('/mine',  authenticateToken, postCtrl.getUserPosts)
 // GET   /api/posts/user/:id → someone’s posts
 router.get('/user/:id', postCtrl.getPostsByUserId);
 
+router.get('/following', authenticateToken, postCtrl.getFollowingPosts)
+
+
 // POST  /api/posts/        → create new
 router.post(
   '/',

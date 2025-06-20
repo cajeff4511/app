@@ -50,8 +50,8 @@ export default function NewPost({ onUpdate }) {
              alt="preview" />
       )}
       <div className="flex items-center space-x-4">
-        <label className="cursor-pointer text-sm text-indigo-600 hover:underline">
-          Attach image
+        <label className="cursor-pointer text-sm border rounded-sm px-4 py-2 text-indigo-600 hover:underline">
+          Create Image
           <input
             type="file"
             accept="image/*"

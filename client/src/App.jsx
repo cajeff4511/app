@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Layout from './components/Layout'
 import Feed    from './pages/Feed'
 import Search       from './pages/Search'
+import FollowingPage from './pages/FollowingPage'
 
 export default function App() {
   return (
@@ -31,6 +32,16 @@ export default function App() {
          </ProtectedRoute>
         }
       />
+      <Route
+  path="/following"
+  element={
+    <ProtectedRoute>
+      <Layout>
+        <FollowingPage />
+      </Layout>
+    </ProtectedRoute>
+  }
+/>
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route

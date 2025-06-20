@@ -17,9 +17,24 @@ export default function BottomNav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/search" className={({isActive})=>`block text-center text-sm ${isActive?'text-indigo-600':'text-gray-500'}`}>
+          <NavLink
+            to="/search"
+            className={({ isActive }) =>
+              `block text-center text-sm ${isActive ? 'text-indigo-600' : 'text-gray-500'}`
+            }
+          >
             Search
-         </NavLink>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/following"
+            className={({ isActive }) =>
+              `block text-center text-sm ${isActive ? 'text-indigo-600' : 'text-gray-500'}`
+            }
+          >
+            Following
+          </NavLink>
         </li>
         <li>
           <NavLink

@@ -47,3 +47,13 @@ exports.getPostsByUserId = (req, res) => {
     res.json(results)
   })
 }
+
+exports.getFollowingPosts = (req, res) => {
+  const limit  = Math.min(parseInt(req.query.limit) || DEFAULT_LIMIT, 100)
+  const offset = Math.max(parseInt(req.query.offset) || 0, 0)
+
+  Post.findFollowingPaginated(req.user.id, limit, offset, (err, results) => {
+    if (err) return res.status(500).json({ message: 'Failed to fetch following posts' })
+    res.json(results)
+  })
+}
