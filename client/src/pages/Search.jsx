@@ -39,7 +39,7 @@ export default function Search() {
                 className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow hover:bg-gray-50"
               >
                 <img
-                  src={`https://app-production-1f4c.up.railway.app${user.profile_image_url}` || '/default-avatar.png'}
+                  src={`${user.profile_image_url}` || '/default-avatar.png'}
                   alt={user.username}
                   className="w-10 h-10 rounded-full object-cover"
                 />

@@ -1,32 +1,30 @@
-const express = require('express');
-const router  = express.Router();
-const upload  = require('../middleware/upload');
+const express = require('express')
+const router  = express.Router()
+const upload  = require('../middleware/upload')
 const {
   getAllUsers,
   getProfile,
   updateProfile,
   getUserById,
   searchUsers
-} = require('../controllers/userController');
+} = require('../controllers/userController')
 
-// GET   /api/users/        → list all users
-router.get('/', getAllUsers);
+// List all users
+router.get('/', getAllUsers)
 
-// GET   /api/users/profile → your profile
-router.get('/profile', getProfile);
+// Your profile
+router.get('/profile', getProfile)
 
-// PUT   /api/users/profile → update bio & pic
+// Update profile with bio + image
 router.put(
   '/profile',
-  upload.single('profile_image'),
+  upload.single('profile_image'),  // must match name from frontend form
   updateProfile
-);
+)
 
+router.get('/search', searchUsers)
 
- router.get('/search', searchUsers)
-// GET   /api/users/:id     → someone else's profile
+// Someone else's profile
 router.get('/:id', getUserById)
 
-
-
-module.exports = router;
+module.exports = router

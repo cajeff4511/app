@@ -45,7 +45,7 @@ export default function NewPost({ onUpdate }) {
         rows={3}
       />
       {preview && (
-        <img src={`https://app-production-1f4c.up.railway.app${preview}`}
+        <img src={`${preview}`}
              className="w-full max-h-60 object-cover rounded-md"
              alt="preview" />
       )}

@@ -21,11 +21,13 @@ exports.getProfile = (req, res) => {
 // update bio and/or profile picture
 exports.updateProfile = (req, res) => {
   const updates = {}
+
   if (req.body.bio != null) {
     updates.bio = req.body.bio
   }
+
   if (req.file) {
-    updates.profile_image_url = `/uploads/${req.file.filename}`
+    updates.profile_image_url = req.file.path  // ✅ Cloudinary URL
   }
 
   User.updateById(req.user.id, updates, err => {
@@ -38,7 +40,6 @@ exports.updateProfile = (req, res) => {
     })
   })
 }
-
 
 exports.getUserById = (req, res) => {
   const id = req.params.id
