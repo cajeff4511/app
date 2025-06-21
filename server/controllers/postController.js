@@ -24,8 +24,8 @@ exports.getUserPosts = (req, res) => {
 
 // POST /api/posts
 exports.createPost = (req, res) => {
-  const content  = req.body.content || ''
-  const imageUrl = req.file ? `${req.file.filename}` : null
+  const content = req.body.content || ''
+  const imageUrl = req.file ? req.file.path : null // use full Cloudinary URL
 
   Post.create(req.user.id, content, imageUrl, err => {
     if (err) return res.status(500).json({ message: 'Failed to create post' })
@@ -37,6 +37,7 @@ exports.createPost = (req, res) => {
     })
   })
 }
+
 
 // GET /api/posts/user/:id
 exports.getPostsByUserId = (req, res) => {
