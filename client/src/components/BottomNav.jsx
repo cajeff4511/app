@@ -1,52 +1,34 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function BottomNav() {
+  const base = 'block text-center text-sm font-medium px-4 py-2 rounded-md transition';
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-16 bg-white border-t shadow-inner">
-      <ul className="h-full flex items-center justify-around">
-        <li>
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) =>
-              `block text-center text-sm ${isActive ? 'text-indigo-600' : 'text-gray-500'}`
-            }
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/search"
-            className={({ isActive }) =>
-              `block text-center text-sm ${isActive ? 'text-indigo-600' : 'text-gray-500'}`
-            }
-          >
-            Search
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/following"
-            className={({ isActive }) =>
-              `block text-center text-sm ${isActive ? 'text-indigo-600' : 'text-gray-500'}`
-            }
-          >
-            Following
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/profile"
-            className={({ isActive }) =>
-              `block text-center text-sm ${isActive ? 'text-indigo-600' : 'text-gray-500'}`
-            }
-          >
-            Profile
-          </NavLink>
-        </li>
+    <nav className="fixed bottom-0 inset-x-0 h-16 bg-[#655F43] border-t border-[#FFD300] shadow-inner">
+      <ul className="h-full flex items-center justify-around text-white">
+        {[
+          { to: '/public',   label: 'Public',    end: true },
+          { to: '/search',   label: 'Search' },
+          { to: '/',         label: 'Following' },
+          { to: '/profile',  label: 'Profile' },
+        ].map(({ to, label, end }) => (
+          <li key={to}>
+            <NavLink
+              to={to}
+              end={end}
+              className={({ isActive }) =>
+                `${base} ${
+                  isActive
+                    ? 'bg-[#FFD300] text-[#202020]'
+                    : 'text-white hover:bg-[#FFD300]/20'
+                }`
+              }
+            >
+              {label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
-  )
+  );
 }

@@ -30,7 +30,7 @@ export default function Feed() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 pb-16">
+     <div className="min-h-screen bg-[#202020] p-4 pb-16 text-white">
       <div className="max-w-2xl mx-auto space-y-6">
         <NewPost onUpdate={setPosts} />
 
@@ -39,7 +39,7 @@ export default function Feed() {
         {posts.length >= limit + offset && (
           <button
             onClick={loadMore}
-            className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md transition"
+            className="w-full py-2 bg-[#FFD300] text-[#202020] rounded-md hover:bg-[#e6c000]"
           >
             Load More
           </button>
