@@ -25,7 +25,7 @@ exports.getUserPosts = (req, res) => {
 // POST /api/posts
 exports.createPost = (req, res) => {
   const content  = req.body.content || ''
-  const imageUrl = req.file ? `/uploads/${req.file.filename}` : null
+  const imageUrl = req.file ? `${req.file.filename}` : null
 
   Post.create(req.user.id, content, imageUrl, err => {
     if (err) return res.status(500).json({ message: 'Failed to create post' })
