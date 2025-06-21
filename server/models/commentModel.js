@@ -26,3 +26,11 @@ exports.findByPostIdPaginated = (postId, limit, offset, cb) => {
   `
   db.query(sql, [postId, limit, offset], cb)
 }
+
+exports.countByPost = (postId, cb) => {
+  const sql = 'SELECT COUNT(*) AS count FROM comments WHERE post_id = ?'
+  db.query(sql, [postId], (err, results) => {
+    if (err) return cb(err)
+    cb(null, results[0].count)
+  })
+}

@@ -29,3 +29,17 @@ exports.createComment = (req, res) => {
     })
   })
 }
+
+exports.getCountByPost = (req, res) => {
+  const postId = req.params.id;
+
+  Comment.countByPost(postId, (err, count) => {
+    if (err) {
+      console.error(err);
+      return res
+        .status(500)
+        .json({ message: 'Failed to fetch comment count' });
+    }
+    res.json({ count });
+  });
+};

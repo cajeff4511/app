@@ -5,20 +5,26 @@ import api from './api';
 import CommentSection from './CommentSection';
 
 export default function PostCard({ post }) {
-  const [likes, setLikes]         = useState(0);
-  const [liked, setLiked]         = useState(false);
+  const [likes, setLikes]           = useState(0);
+  const [liked, setLiked]           = useState(false);
+  const [comments, setComments]     = useState(0);
   const [showComments, setShowComments] = useState(false);
 
   /* ────────────────────────────
-   *  Fetch like status
+   *  Fetch likes + comment count
    * ───────────────────────────*/
   useEffect(() => {
-    api
-      .get(`/api/likes/post/${post.id}`)
+    // likes
+    api.get(`/api/likes/post/${post.id}`)
       .then(res => {
         setLikes(res.data.count);
         setLiked(res.data.liked);
       })
+      .catch(() => {});
+
+    // comment count
+    api.get(`/api/comments/post/${post.id}/count`)
+      .then(res => setComments(res.data.count))
       .catch(() => {});
   }, [post.id]);
 
@@ -39,7 +45,7 @@ export default function PostCard({ post }) {
    *  JSX
    * ───────────────────────────*/
   return (
-    <div className="bg-[#655F43] text-white p-6 rounded-lg shadow">
+    <div className="bg-[#655F43] text-white px-3 pt-4 pb-3 md:p-6 rounded-lg shadow">
       {/* Header */}
       <div className="flex items-center mb-4 space-x-3">
         <Link to={`/users/${post.user_id}`}>
@@ -62,7 +68,7 @@ export default function PostCard({ post }) {
         </div>
       </div>
 
-      {/* Image (if any) */}
+      {/* Image */}
       {post.image_url && (
         <img
           src={post.image_url}
@@ -71,34 +77,29 @@ export default function PostCard({ post }) {
         />
       )}
 
-      {/* Like + Comment controls */}
+      {/* Controls */}
       <div className="flex items-center mb-4 space-x-4">
         {/* Like */}
         <button onClick={toggleLike} className="focus:outline-none cursor-pointer">
-          <span
-            className={`text-4xl ${
-              liked ? 'text-[#FFD300]' : 'text-[#FFD300]'
-            }`}
-          >
+          <span className="text-3xl text-[#FFD300]">
             {liked ? '♥' : '♡'}
           </span>
         </button>
         <span>{likes}</span>
 
         {/* Comment */}
-       <button onClick={toggleComments} className="focus:outline-none text-2xl cursor-pointer">
-          {showComments ? (
-            <FaComment className="text-[#FFD300]" />     
-          ) : (
-            <FaRegComment className="text-[#FFD300]" />  
-          )}
+        <button onClick={toggleComments} className="focus:outline-none text-2xl cursor-pointer">
+          {showComments
+            ? <FaComment className="text-[#FFD300]" />
+            : <FaRegComment className="text-[#FFD300]" />}
         </button>
+        <span>{comments}</span>
       </div>
 
-      {/* Post text */}
+      {/* Text */}
       <p className="mb-4 text-2xl">{post.content}</p>
 
-      {/* Comment section (toggled) */}
+      {/* Comments */}
       {showComments && <CommentSection postId={post.id} />}
     </div>
   );

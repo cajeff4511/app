@@ -98,14 +98,19 @@ export default function Profile() {
             <div className="flex justify-center">
               <label htmlFor="profileImage" className="cursor-pointer">
                 {preview ? (
-                  <img
+                  <div className='flex justify-center flex-col items-center'>
+                     <img
                     src={preview}
                     alt="Preview"
                     className="w-24 h-24 rounded-full object-cover mb-4"
                   />
+                  <span className="text-white text-center">Edit Porfile Pic</span>
+                  </div>
+                 
+                  
                 ) : (
                   <div className="w-24 h-24 rounded-full bg-[#202020]/60 flex items-center justify-center mb-4">
-                    <span className="text-[#FFD300]">Click to upload</span>
+                    <span className="text-white">Click to upload</span>
                   </div>
                 )}
               </label>
@@ -135,14 +140,14 @@ export default function Profile() {
             <div className="flex space-x-4">
               <button
                 type="submit"
-                className="flex-1 bg-[#FFD300] text-[#202020] py-2 rounded-md hover:bg-[#e6c000] transition"
+                className="cursor-pointer flex-1 bg-[#FFD300] text-[#202020] py-2 rounded-md hover:bg-[#e6c000] transition"
               >
                 Save
               </button>
               <button
                 type="button"
                 onClick={cancelEdit}
-                className="flex-1 border border-[#FFD300]/40 py-2 rounded-md hover:bg-[#FFD300]/10 transition"
+                className="cursor-pointer flex-1 border border-[#FFD300]/40 py-2 rounded-md hover:bg-[#FFD300]/10 transition"
               >
                 Cancel
               </button>
@@ -178,7 +183,7 @@ export default function Profile() {
             {/* edit button */}
             <button
               onClick={startEdit}
-              className="w-full bg-[#FFD300] text-[#202020] py-2 rounded-md hover:bg-[#e6c000] transition"
+              className="cursor-pointer w-full bg-[#FFD300] text-[#202020] py-2 rounded-md hover:bg-[#e6c000] transition"
             >
               Edit Profile
             </button>

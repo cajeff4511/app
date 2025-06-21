@@ -33,6 +33,7 @@ export default function Register() {
             </label>
             <input
               name="username"
+              type='text'
               value={form.username}
               onChange={handleChange}
               required
