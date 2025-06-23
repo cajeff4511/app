@@ -11,6 +11,7 @@ const commentRoutes     = require('./routes/commentRoutes');
 const { authenticateToken } = require('./middleware/auth');
 const followRoutes      = require('./routes/followRoutes');
 const likeRoutes        = require('./routes/likeRoutes');
+const newsRoutes = require('./routes/newsRoutes');
 
 const app = express();
 app.use(cors());
@@ -34,6 +35,9 @@ app.use('/api/likes', likeRoutes);
 app.use('/api/users', authenticateToken, userRoutes);
 
 app.use('/api/follows', followRoutes);
+
+app.use('/api/news', newsRoutes);
+
 // -----------------------------------------
 process.setMaxListeners(20);
 const PORT = process.env.PORT || 3000;
