@@ -32,7 +32,7 @@ export default function Feed() {
   return (
      <div className="min-h-screen bg-[#202020] p-4 pb-16 text-white">
       <div className="max-w-2xl mx-auto space-y-6">
-        <NewPost onUpdate={setPosts} />
+      
 
         {posts.map(p => <PostCard key={p.id} post={p} />)}
 

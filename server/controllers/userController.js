@@ -26,6 +26,14 @@ exports.updateProfile = (req, res) => {
     updates.bio = req.body.bio
   }
 
+  if (req.body.home_church != null) {
+  updates.home_church = req.body.home_church
+}
+
+if (req.body.denomination != null) {
+  updates.denomination = req.body.denomination
+}
+
   if (req.file) {
     updates.profile_image_url = req.file.path  // ✅ Cloudinary URL
   }

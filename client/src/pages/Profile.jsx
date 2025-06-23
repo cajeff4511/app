@@ -10,6 +10,8 @@ export default function Profile() {
   const [bio, setBio]         = useState('');
   const [file, setFile]       = useState(null);
   const [preview, setPreview] = useState('');
+  const [homeChurch, setHomeChurch] = useState('');
+const [denomination, setDenomination] = useState('');
   const [offset, setOffset]   = useState(0);
   const limit                 = 5;
   const navigate              = useNavigate();
@@ -23,6 +25,8 @@ export default function Profile() {
         setUser(res.data);
         setBio(res.data.bio || '');
         setPreview(res.data.profile_image_url);
+        setHomeChurch(res.data.home_church || '');
+        setDenomination(res.data.denomination || '');
       })
       .catch(() => {
         localStorage.removeItem('token');
@@ -42,6 +46,9 @@ export default function Profile() {
     setFile(null);
     setBio(user.bio || '');
     setPreview(user.profile_image_url);
+    setHomeChurch(user.home_church || '');
+    setDenomination(user.denomination || '');
+
   };
 
   const handleFile = e => {
@@ -54,6 +61,9 @@ export default function Profile() {
     e.preventDefault();
     const form = new FormData();
     form.append('bio', bio);
+    form.append('home_church', homeChurch);
+    form.append('denomination', denomination);
+
     if (file) form.append('profile_image', file);
 
     try {
@@ -63,6 +73,9 @@ export default function Profile() {
       setUser(res.data);
       setBio(res.data.bio || '');
       setPreview(res.data.profile_image_url);
+      setHomeChurch(res.data.home_church || '');
+      setDenomination(res.data.denomination || '');
+
       setFile(null);
       setEditing(false);
     } catch {
@@ -135,6 +148,31 @@ export default function Profile() {
                 className="w-full px-3 py-2 border border-[#FFD300] rounded-md bg-[#202020] text-white focus:ring-2 focus:ring-[#FFD300]"
               />
             </div>
+            {/* home_church */}
+            <div>
+              <label className="block text-sm font-medium mb-1 text-[#FFD300]">
+                Home Church
+              </label>
+              <input
+                type="text"
+                value={homeChurch}
+                onChange={e => setHomeChurch(e.target.value)}
+                className="w-full px-3 py-2 border border-[#FFD300] rounded-md bg-[#202020] text-white focus:ring-2 focus:ring-[#FFD300]"
+              />
+            </div>
+
+            {/* denomination */}
+            <div>
+              <label className="block text-sm font-medium mb-1 text-[#FFD300]">
+                Denomination
+              </label>
+              <input
+                type="text"
+                value={denomination}
+                onChange={e => setDenomination(e.target.value)}
+                className="w-full px-3 py-2 border border-[#FFD300] rounded-md bg-[#202020] text-white focus:ring-2 focus:ring-[#FFD300]"
+              />
+            </div>
 
             {/* actions */}
             <div className="flex space-x-4">
@@ -179,6 +217,15 @@ export default function Profile() {
             <p className="text-center mb-6">
               {user.bio || 'No bio yet.'}
             </p>
+            <p className="text-center mb-2">
+              <span className="font-semibold text-[#FFD300]">Home Church: </span>
+              {user.home_church || 'Not specified'}
+            </p>
+            <p className="text-center mb-6">
+              <span className="font-semibold text-[#FFD300]">Denomination: </span>
+              {user.denomination || 'Not specified'}
+            </p>
+
 
             {/* edit button */}
             <button

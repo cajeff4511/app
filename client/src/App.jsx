@@ -9,6 +9,9 @@ import Layout from './components/Layout';
 import Feed from './pages/Feed';
 import Search from './pages/Search';
 import FollowingPage from './pages/FollowingPage';
+import NewPostPage from './pages/NewPostPage'; // ⬅️ add this line
+import NewsFeed from './pages/NewsFeed';
+
 
 export default function App() {
   return (
@@ -22,6 +25,14 @@ export default function App() {
         }
       />
       <Route
+        path="/news"
+        element={
+          <ProtectedRoute>
+            <Layout><NewsFeed /></Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="/search"
         element={
           <ProtectedRoute>
@@ -29,6 +40,15 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/new-post"
+        element={
+          <ProtectedRoute>
+            <Layout><NewPostPage /></Layout>
+          </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/"
         element={
