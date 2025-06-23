@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import api from '../components/api'
 import NewPost from '../components/NewPost'
 import PostCard from '../components/PostCard'
-import MainVerse from '../components/mainVerse'
+import Verse from '../components/Verse'
+
 
 export default function Feed() {
   const [posts, setPosts]   = useState([])
@@ -33,8 +34,8 @@ export default function Feed() {
   return (
      <div className="min-h-screen bg-[#202020] p-4 pb-16 text-white">
       <div className="max-w-2xl mx-auto space-y-6">
-        <MainVerse />
-
+       
+ <Verse />
         {posts.map(p => <PostCard key={p.id} post={p} />)}
 
         {posts.length >= limit + offset && (

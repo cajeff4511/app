@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-const MainVerse = () => {
+const Verse = () => {
   return (
-    <div className="border-l-4 border-[#FFD300] p-4 mb-6">
+     <div className="border-l-4 border-[#FFD300] p-4 mb-6">
       <h2 className="text-lg font-semibold text-[#FFD300] mb-2">
         Verse of the Week
       </h2>
@@ -11,7 +11,7 @@ const MainVerse = () => {
         “Now you are the body of Christ, and each one of you is a part of it.”
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default MainVerse;
+export default Verse
